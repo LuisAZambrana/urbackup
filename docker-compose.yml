@@ -1,0 +1,16 @@
+services:
+  urbackup:
+    image: uroni/urbackup-server:latest
+    container_name: urbackup
+    restart: unless-stopped
+    environment:
+     - PUID=0
+     - PGID=0 
+     - TZ=America/Argentina/Buenos_Aires
+    volumes:
+     - ./configUrbackup:/var/urbackup
+     - ./backup:/backups
+     - ./usr/share/urbackup:/usr/share/urbackup
+    network_mode: "host"`
+    cap_add:
+     - SYS_ADMIN
